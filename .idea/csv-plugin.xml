@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="CsvFileAttributes">
+    <option name="attributeMap">
+      <map>
+        <entry key="\ars-config_norepo\originRepositoryConfig.json">
+          <value>
+            <Attribute>
+              <option name="separator" value=":" />
+            </Attribute>
+          </value>
+        </entry>
+        <entry key="\src\thkoeln\algo\dictionaries\AVLTree\AVLTree.java">
+          <value>
+            <Attribute>
+              <option name="separator" value=";" />
+            </Attribute>
+          </value>
+        </entry>
+        <entry key="\src\thkoeln\algo\dictionaries\AVLTree\AVLTreeNode.java">
+          <value>
+            <Attribute>
+              <option name="separator" value=";" />
+            </Attribute>
+          </value>
+        </entry>
+        <entry key="\src\thkoeln\algo\dictionaries\AVLTree\IAVLTree.java">
+          <value>
+            <Attribute>
+              <option name="separator" value="," />
+            </Attribute>
+          </value>
+        </entry>
+        <entry key="\src\thkoeln\algo\dictionaries\BinarySearchTree\BinarySearchTree.java">
+          <value>
+            <Attribute>
+              <option name="separator" value=";" />
+            </Attribute>
+          </value>
+        </entry>
+        <entry key="\src\thkoeln\algo\dictionaries\BinarySearchTree\BinarySearchTreePrinter2.java">
+          <value>
+            <Attribute>
+              <option name="separator" value=";" />
+            </Attribute>
+          </value>
+        </entry>
+        <entry key="\src\thkoeln\algo\dictionaries\BinarySearchTree\BinaryTreeNode.java">
+          <value>
+            <Attribute>
+              <option name="separator" value=";" />
+            </Attribute>
+          </value>
+        </entry>
+        <entry key="\src\thkoeln\algo\dictionaries\BinarySearchTree\IBinarySearchTree.java">
+          <value>
+            <Attribute>
+              <option name="separator" value=";" />
+            </Attribute>
+          </value>
+        </entry>
+        <entry key="\src\thkoeln\algo\dictionaries\BinarySearchTree\IBinaryTreeNode.java">
+          <value>
+            <Attribute>
+              <option name="separator" value=";" />
+            </Attribute>
+          </value>
+        </entry>
+        <entry key="\test\java\thkoeln\algo\ms1\BinarySearchTree\BinarySearchTreeTests\Level_02_02_BinarySearchTree_InsertTest.java">
+          <value>
+            <Attribute>
+              <option name="separator" value=";" />
+            </Attribute>
+          </value>
+        </entry>
+        <entry key="\test\java\thkoeln\algo\ms1\BinarySearchTree\BinarySearchTreeTests\Level_02_04_IBinarySearchTreeTest_PredecessorSuccessor.java">
+          <value>
+            <Attribute>
+              <option name="separator" value="," />
+            </Attribute>
+          </value>
+        </entry>
+        <entry key="\test\java\thkoeln\algo\ms1\BinarySearchTree\Level_01_03_IBinaryTreeNodeTest_ParentLeftRight.java">
+          <value>
+            <Attribute>
+              <option name="separator" value=";" />
+            </Attribute>
+          </value>
+        </entry>
+        <entry key="\test\java\thkoeln\algo\ms1\Level_01_SimpleBinaryTree.java">
+          <value>
+            <Attribute>
+              <option name="separator" value=";" />
+            </Attribute>
+          </value>
+        </entry>
+        <entry key="\test\java\thkoeln\algo\praktikumms1\DijkstraTests.java">
+          <value>
+            <Attribute>
+              <option name="separator" value=";" />
+            </Attribute>
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+</project>
