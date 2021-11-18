@@ -35,7 +35,7 @@ import java.util.ArrayList;
 //
 //      Weitere Erl�uterungen ---> siehe IBinarySearchTree.java
 //
-public class BinarySearchTree<K extends Comparable<K>, V>  implements IBinarySearchTree<K,V>{
+public class  BinarySearchTree<K extends Comparable<K>, V>  implements IBinarySearchTree<K,V>{
 
     // The ROOT-Node of the Tree
     private IBinarySearchTreeNode<K,V> root;
@@ -46,11 +46,11 @@ public class BinarySearchTree<K extends Comparable<K>, V>  implements IBinarySea
 //   |____|_____|__|__|_____|____|__| |_____|____|____|_____|__| |_____|
 
     public BinarySearchTree(){
-        throw new UnsupportedOperationException("Bitte implementieren!");
+        setRoot(null);
     }
 
     public BinarySearchTree(K... keys) {
-        throw new UnsupportedOperationException("Bitte implementieren!");
+        insert(keys);
     }
 
 
@@ -61,12 +61,12 @@ public class BinarySearchTree<K extends Comparable<K>, V>  implements IBinarySea
 //                  |__|       |_____|
     @Override
     public void empty(){
-        throw new UnsupportedOperationException("Bitte implementieren!");
+        root = null;
     }
 
     @Override
-    public boolean isEmpty(){
-        throw new UnsupportedOperationException("Bitte implementieren!");
+    public boolean isEmpty() {
+        return root == null;
     }
 
 
@@ -77,11 +77,12 @@ public class BinarySearchTree<K extends Comparable<K>, V>  implements IBinarySea
 
     @Override
     public IBinarySearchTreeNode<K, V> getRoot() {
-        throw new UnsupportedOperationException("Bitte implementieren!");
+        return root;
     }
+
     @Override
     public void setRoot(IBinarySearchTreeNode<K, V> node) {
-        throw new UnsupportedOperationException("Bitte implementieren!");
+        root = node;
     }
 
 
@@ -92,23 +93,52 @@ public class BinarySearchTree<K extends Comparable<K>, V>  implements IBinarySea
 
     @Override
     public void insert(K key, V value) {
-        throw new UnsupportedOperationException("Bitte implementieren!");
+        if(root == null) root = new BinarySearchTreeNode<K, V>(key, value);
+        else insert(new BinarySearchTreeNode<K, V>(key, value), root);
     }
 
     @Override
     public void insert(K key) {
-        throw new UnsupportedOperationException("Bitte implementieren!");
+        if(root == null) root = new BinarySearchTreeNode<K, V>(key);
+        else insert(new BinarySearchTreeNode<K, V>(key), root);
     }
 
     @Override
     public void insert(K... keys) {
-        throw new UnsupportedOperationException("Bitte implementieren!");
+        for(K key: keys){
+            insert(key);
+        }
     }
 
 
-    private void insert(IBinarySearchTreeNode<K,V> node){
-        throw new UnsupportedOperationException("Bitte implementieren!");
+    private void insert(IBinarySearchTreeNode<K,V> node, IBinarySearchTreeNode<K,V> root) {
+        switch (node.getKey().compareTo(root.getKey())) {
+            case 1: {
+                if (root.getRight() == null) {
+                    root.setRight(node);
+                    node.setParent(root);
+                } else {
+                    insert(node, root.getRight());
+                }
+                break;
+            }
+
+            case -1: {
+                if (root.getLeft() == null) {
+                    root.setLeft(node);
+                    node.setParent(root);
+                } else {
+                    insert(node, root.getLeft());
+                }
+                break;
+            }
+
+            default:
+                throw new IllegalArgumentException("can't insert already existing node");
+        }
+
     }
+
 
 
 //       __       __       __
@@ -168,25 +198,36 @@ public class BinarySearchTree<K extends Comparable<K>, V>  implements IBinarySea
 //   |   _|   _|  _  |  |  |  -__|   _|__ --|  |     |  _  |
 //   |____|__| |___._|\___/|_____|__| |_____|__|__|__|___  |
 //                                                   |_____|
+    ArrayList<K> keys;
 
     @Override
     public ArrayList<K> inOrderTreeWalk() {
-        return inOrderTreeWalk(this.getRoot());
+        keys = null;
+        return inOrderTreeWalk(root.minimum());
     }
 
     @Override
     public ArrayList<K> preOrderTreeWalk() {
-        return preOrderTreeWalk(this.getRoot());
+        keys = null;
+        return preOrderTreeWalk(root);
     }
 
     @Override
     public ArrayList<K> postOrderTreeWalk() {
-        return postOrderTreeWalk(this.getRoot());
+        keys = null;
+        return postOrderTreeWalk(root.maximum());
     }
 
     @Override
     public ArrayList<K> inOrderTreeWalk(IBinarySearchTreeNode<K, V> node) {
-        throw new UnsupportedOperationException("Bitte implementieren!");
+
+
+
+
+
+
+        if(node == root.maximum()) return keys;
+        else return inOrderTreeWalk(node)
     }
 
     @Override
@@ -207,7 +248,7 @@ public class BinarySearchTree<K extends Comparable<K>, V>  implements IBinarySea
 
     @Override
     public int size() {
-        throw new UnsupportedOperationException("Bitte implementieren!");
+        return root.size();
     }
 
 

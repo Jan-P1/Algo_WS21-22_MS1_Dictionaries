@@ -77,7 +77,6 @@ public class BinarySearchTreeNode<K extends Comparable<K>, V> implements IBinary
 
     @Override
     public void setValue(V value) throws IllegalArgumentException{
-        if (value == null) throw new IllegalArgumentException("value can't be null");
         this.value = value;
 
     }
@@ -135,12 +134,13 @@ public class BinarySearchTreeNode<K extends Comparable<K>, V> implements IBinary
 
     @Override
     public int size() {
-        throw new UnsupportedOperationException("Bitte implementieren!");
+       return treeSize(this);
     }
 
     public int treeSize(IBinarySearchTreeNode<K, V> root)
     {
-        throw new UnsupportedOperationException("Bitte implementieren!");
+        if(root == null) return 0;
+        else return (treeSize(root.getLeft()) + 1 + treeSize(root.getRight()));
     }
 
 
@@ -152,28 +152,30 @@ public class BinarySearchTreeNode<K extends Comparable<K>, V> implements IBinary
 
     @Override
     public int height() {
-        throw new UnsupportedOperationException("Bitte implementieren!");
+        return treeHeight(this);
     }
 
     private int treeHeight(IBinarySearchTreeNode<K, V> root)
     {
-        throw new UnsupportedOperationException("Bitte implementieren!");
+        if(root == null) return 0;
+        else {
+            int lHeight = treeHeight(root.getLeft());
+            int rHeight = treeHeight(root.getRight());
+
+            if (lHeight > rHeight) return ++lHeight;
+            else return ++rHeight;
+        }
     }
 
     @Override
-    public int depth(){
-        Integer counter = 0;
-        IBinarySearchTreeNode<K, V> currentNode = new BinarySearchTreeNode<key, value>;
-
-        while (currentNode.parent != null){
-            ++counter;
-            currentNode = currentNode.parent;
-        }
+    public int depth() {
+        return treeDepth(this) -1;
     }
 
     private int treeDepth(IBinarySearchTreeNode<K, V> root)
     {
-        throw new UnsupportedOperationException("Bitte implementieren!");
+        if (root == null) return 0;
+        else return 1 + treeDepth(root.getParent());
     }
 
 
@@ -210,21 +212,23 @@ public class BinarySearchTreeNode<K extends Comparable<K>, V> implements IBinary
 
     @Override
     public IBinarySearchTreeNode<K, V> minimum() {
-        throw new UnsupportedOperationException("Bitte implementieren!");
+        return treeMinimum(this);
     }
 
     @Override
     public IBinarySearchTreeNode<K, V> maximum() {
-        throw new UnsupportedOperationException("Bitte implementieren!");
+        return treeMaximum(this);
     }
 
 
     public IBinarySearchTreeNode<K, V> treeMinimum(IBinarySearchTreeNode<K, V> root) {
-        throw new UnsupportedOperationException("Bitte implementieren!");
+        if (root.getLeft() == null) return root;
+        else return treeMinimum(root.getLeft());
     }
 
     public IBinarySearchTreeNode<K, V> treeMaximum(IBinarySearchTreeNode<K, V> root) {
-        throw new UnsupportedOperationException("Bitte implementieren!");
+        if (root.getRight() == null) return root;
+        else return treeMaximum(root.getRight());
     }
 
 
@@ -237,23 +241,44 @@ public class BinarySearchTreeNode<K extends Comparable<K>, V> implements IBinary
 //   |__ --|  |  |  __|  __|  -__|__ --|__ --|  _  |   _|
 //   |_____|_____|____|____|_____|_____|_____|_____|__|
 
+    public IBinarySearchTreeNode<K, V> findRoot(){
+        return(treeRoot(this));
+    }
+
+    public IBinarySearchTreeNode<K, V> treeRoot(IBinarySearchTreeNode<K, V> x){
+        if (x.getParent() == null) return x;
+        else return treeRoot(x.getParent());
+    }
+
     @Override
     public IBinarySearchTreeNode<K, V> predecessor() {
-        throw new UnsupportedOperationException("Bitte implementieren!");
-    }
-
-    @Override
-    public IBinarySearchTreeNode<K, V> successor() {
-        throw new UnsupportedOperationException("Bitte implementieren!");
-    }
-
-    public IBinarySearchTreeNode<K, V> treeSuccessor(IBinarySearchTreeNode<K, V> x){
-        throw new UnsupportedOperationException("Bitte implementieren!");
+        if (this.findRoot().minimum() == this) return null;
+        else if (this.getLeft() != null) return this.getLeft().maximum();
+        else if (this.getParent().getRight() == this) return this.getParent();
+        else return treePredecessor(this.getParent());
     }
 
     public IBinarySearchTreeNode<K, V> treePredecessor(IBinarySearchTreeNode<K, V> x){
-        throw new UnsupportedOperationException("Bitte implementieren!");
+        if (x.getParent().getRight() == x) return x.getParent();
+        else return treePredecessor(x.getParent());
     }
+
+
+    @Override
+    public IBinarySearchTreeNode<K, V> successor() {
+        if (this.findRoot().maximum() == this) return null;
+        else if (this.getRight() != null) return this.getRight().minimum();
+        else if (this.getParent().getLeft() == this) return this.getParent();
+        else return treeSuccessor(this.getParent());
+    }
+
+    public IBinarySearchTreeNode<K, V> treeSuccessor(IBinarySearchTreeNode<K, V> x){
+        if (x.getParent().getLeft() == x) return x.getParent();
+        else return treeSuccessor(x.getParent());
+    }
+
+
+
 
 
 //               __       __

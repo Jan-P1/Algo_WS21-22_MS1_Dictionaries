@@ -239,10 +239,10 @@ class Level_01_07_IBinarySearchTreeNodeTest_HeightDepth {
         TreePrinter.printNode((BinarySearchTreeNode<Integer, String>) node);
 
         // When
-        int actualHeight = node.height();
+        int actualDepth = node.depth();
 
         // Then
-        assertEquals(1, actualHeight);
+        assertEquals(0, actualDepth);
     }
 
     @Test
